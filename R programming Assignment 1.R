@@ -16,7 +16,10 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
 }
 
 # Example usage
-pollutantmean(directory = '~/Desktop/specdata', pollutant = 'sulfate', id = 20)
+pollutantmean(directory = 'C:/Users/sgpohlj87/Downloads/specdata', "sulfate", id=1:10)
+pollutantmean(directory = 'C:/Users/sgpohlj87/Downloads/specdata', "nitrate", id=70:72)
+pollutantmean(directory = 'C:/Users/sgpohlj87/Downloads/specdata', "sulfate", id=34)
+pollutantmean(directory = 'C:/Users/sgpohlj87/Downloads/specdata', "nitrate")
 
 complete <- function(directory,  id = 1:332) {
   
@@ -32,7 +35,12 @@ complete <- function(directory,  id = 1:332) {
 }
 
 #Example usage
-complete(directory = '~/Desktop/specdata', id = 20:30)
+complete(directory = 'C:/Users/sgpohlj87/Downloads/specdata', id = c(6, 10, 20, 34, 100, 200, 310))
+complete(directory = 'C:/Users/sgpohlj87/Downloads/specdata', id = 54)
+set.seed(42)
+cc <- complete(directory = 'C:/Users/sgpohlj87/Downloads/specdata', id = 332:1)
+use <- sample(332, 10)
+print(cc[use, "nobs"])
 
 corr <- function(directory, threshold = 0) {
   
@@ -49,4 +57,20 @@ corr <- function(directory, threshold = 0) {
 }
 
 # Example Usage
-corr(directory = '~/Desktop/specdata', threshold = 150)
+corr(directory = 'C:/Users/sgpohlj87/Downloads/specdata', threshold = 150)
+cr <- corr(directory = 'C:/Users/sgpohlj87/Downloads/specdata')                
+cr <- sort(cr)                
+set.seed(868)                
+out <- round(cr[sample(length(cr), 5)], 4)
+print(out)
+cr <- corr('C:/Users/sgpohlj87/Downloads/specdata', 129)                
+cr <- sort(cr)                
+n <- length(cr)                
+set.seed(197)                
+out <- c(n, round(cr[sample(n, 5)], 4))
+print(out)
+cr <- corr('C:/Users/sgpohlj87/Downloads/specdata', 2000)                
+n <- length(cr)                
+cr <- corr('C:/Users/sgpohlj87/Downloads/specdata', 1000)                
+cr <- sort(cr)
+print(c(n, round(cr, 4)))
