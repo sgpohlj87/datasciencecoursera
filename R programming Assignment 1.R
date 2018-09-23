@@ -38,7 +38,7 @@ complete <- function(directory,  id = 1:332) {
 complete(directory = 'C:/Users/sgpohlj87/Downloads/specdata', id = c(6, 10, 20, 34, 100, 200, 310))
 complete(directory = 'C:/Users/sgpohlj87/Downloads/specdata', id = 54)
 set.seed(42)
-cc <- complete(directory = 'C:/Users/sgpohlj87/Downloads/specdata', id = 332:1)
+cc <- complete(directory = 'C:/Users/sgpohlj87/Downloads/specdata', id = 1:332)
 use <- sample(332, 10)
 print(cc[use, "nobs"])
 
